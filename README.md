@@ -1,20 +1,22 @@
 # Final-Project-Statistical-Modelling-with-Python
 
 ## Project/Goals
-I had a few ideas in mind for what I could accomplish or, more accurately, what questions I could answer:
-i) Which stations were 
+My main goal was to see if there was a correlation between bike station placement and number of surrounding POIs. For example, was a station more likely to be placed somewhere with a lot of POIs?
 
 ## Process
 ### Step 0: Introduction & Planning
-I decided I wanted to work with Hamilton, my home city, in part because I am familiar with the area and figured having some extra observational data on my hands would be beneficial to me (e.g. I know what kinds of POIs are in the area, so I could test different hypotheses more effectively without having to conduct as much additional research). With this in mind, I settled on these POIs as my main focal points:
+I decided I wanted to work with Hamilton, my home city, in part because I am familiar with the area and figured having some extra observational data on my hands would be beneficial to me (e.g. I know what kinds of POIs are in the area, so I do not need to do as much research about what is around). 
 
-i) Restaurants & Pubs
-ii) Recreation Centres
-iii) Trails & Parks
-iv) Post-Secondary Educational Institutions
+I also had to take into account that, as of 2023-06-01, there are no bike stations up the mountain (i.e. none are anywhere up the Niagara Escarpment) nor east of Ottawa Street. As such, I could use geolocational criteria to brainstorm different analytical goals; for example, I did not have to consider anything in Stoney Creek.
+
+Lastly, I didn't want to have too huge a dateset to work with. As such, I settled on these POIs as my main focal points:
+
+i) Restaurants
+ii) Bars, Pubs & Clubs
+iii) Parks of all sorts
+iv) Bike-Accessible Trails
 v) Grocery Stores
 
-I also had to take into account that, as of 2023-06-01, there are no bike stations up the mountain (i.e. none are anywhere up the Niagara Escarpment) nor east of Ottawa Street. As such, I can use geolocational criteria to filter out various POIs, but which ones can be filtered out could not be decided without first accessing the three APIs and seeing what information I could access with them.
 
 ### Step 1: Accessing APIs & Creating CSV Files
 i) CityBikes:
@@ -26,16 +28,54 @@ ii) FourSquare
 iii) Yelp
 
 
-### Step 2: Parsing & Filtering Data
+### Step 2: Parsing, Filtering, & Normalizing Data
 i) CityBikes:
 Filtered out: The entire "payment" category was dropped due to being irrelevant to the project goals, as was the case for the timestamp property. Additionally, the "empty_slots" and "free_bikes" properties were combined into a joint "total_slots" variable on account of the data only being collected at one point in time, so changes in these numbers will not be documented.
 
-ii) FourSquare
-
+ii) FourSquare:
+Filtered the following:
+             'chains', 
+             'link', 
+             'location.formatted_address', 
+             'timezone', 
+             'geocodes.roof.latitude', 
+             'geocodes.roof.longitude', 
+             'geocodes.drop_off.latitude', 
+             'geocodes.drop_off.longitude',
+             'geocodes.front_door.latitude',
+             'geocodes.front_door.longitude',
+             'related_places.parent.fsq_id',
+             'related_places.parent.name',
+             'related_places.children',
+             'location.cross_street',
+             'location.address_extended',
+             'location.po_box',
+             'categories',
+             'distance'
+             Plus a couple location-specific ones like Province and Country identifiers.
 
 iii) Yelp
+Filtered the following:
+              'alias',
+              'image_url',
+              'is_closed',
+              'url',
+              'review_count',
+              'location.address2',
+              'location.address3',
+              'location.display_address',
+              'display_phone',
+              'transactions',
+              'price',
+              'phone',
+              'distance'
+              Plus a couple location-specific ones like Province and Country identifiers.
 
-### Step 3:
+Additionally, for all three DataFrames, I cast location names into lower case for ease of searching through the data.
+
+
+### Step 3: Filter Duplicates
+Due to the nature of 
 
 
 ## Results
