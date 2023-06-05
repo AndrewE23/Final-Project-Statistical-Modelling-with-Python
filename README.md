@@ -44,7 +44,7 @@ The purpose of this was for analysis, including my regression model. My final ta
 I had my dependent variable, est_bike_slots, and my main four independent variables which corresponded with the remaining four FourSquare categories I was able to separate my queries into. While a backward selection regression model would have been better, I went with a forward selection model in part to technical difficulties and in part because I had so few variables to test anyhow and I wanted to get a little extra practice in.
 
 ## Results
-At the end of the day, I was unable to prove any meaningful correlation between bike station placement/bike count, and any of the other variables. There was maybe a slight correlation with bike stations being in close proximity to parks (with a possible ~40% correlation according to certain metrics like Adj. R Square), but it was not substantial enough for me to be able to confirm this without more data.
+At the end of the day, I was unable to prove any meaningful correlation between bike station placement/bike count, and any of the other variables. My most significant variable was park_pois, but the data was not substantial enough for me to be able to confirm this without more data.
 
 ## Challenges 
 All in all, my approach for how to tackle the data was muddles. I initially tried focusing on the different POI as specific data points from which I could derive results from, but after spending too much time on that I realized that there was no meaningful way for me to connect those datasets to the bike stations DataFrame. I had to rewind my progress a bit in order to get data that was meaningful and usable for my goals.
